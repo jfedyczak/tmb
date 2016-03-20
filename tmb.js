@@ -130,5 +130,3 @@ taskSeries([
 ], (e) => {
 	if (e) console.log(e);
 });
-
-console.log(process.argv)
