@@ -65,11 +65,8 @@ const taskRsync = (callback) => {
 	let params = process.argv.slice(2)
 	daysList((e, list) => {
 		let rsync_cmd = params.shift()
-		let sourceFolder = today()
-		let targetFolder = sourceFolder
-		while (list.length > 0 && list[list.length - 1] <= targetFolder) {
-			sourceFolder = list.pop()
-		}
+		let targetFolder = today()
+		let sourceFolder = (list.length > 1 ? list[list.length - 2] : targetFolder)
 		sourceFolder = path.resolve(sourceFolder) + '/'
 		targetFolder = path.resolve(targetFolder) + '/'
 		params.unshift(`--link-dest=${sourceFolder}`)
